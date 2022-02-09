@@ -1,8 +1,11 @@
-:set tabstop=4
-:set shiftwidth=4
+:set noet ci pi sts=0 sw=4 ts=4
+autocmd FileType c,cpp,java,python setlocal noet ci pi sts=0 sw=4 ts=4
+
+:set relativenumber
 
 :noremap <C-k> :bnext<cr>
 :noremap <C-j> :bprevious<cr>
+:noremap \b cw\begin{<C-R>"}<CR>\end{<C-R>"}
 
 call plug#begin("~/.nvim")
 Plug 'jiangmiao/auto-pairs'
@@ -14,11 +17,12 @@ Plug 'begriffs/haskell-vim-now'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jschmold/sweet-dark.vim'
 Plug 'mattn/emmet-vim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin'}
 call plug#end()
 
 set termguicolors
 
-colorscheme sweet_dark
+colorscheme catppuccin
 
 set foldmethod=syntax
 
@@ -49,3 +53,5 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+
+:lua require("setup")
