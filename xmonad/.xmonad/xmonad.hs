@@ -24,10 +24,15 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.TabBarDecoration
 import XMonad.Layout.ResizableTile
-
+import XMonad.Util.NamedScratchpad
 import XMonad.Hooks.ManageHelpers (doFullFloat)
 import XMonad.Hooks.FadeInactive
+import qualified XMonad.StackSet as W
 
+
+scratchpads = [
+	NS "terminal" "gnome-terminal --profile='Scratchpad' --role=SCRATCHPAD" (stringProperty "WM_WINDOW_ROLE" =? "SCRATCHPAD") (customFloating $ W.RationalRect 0.15 0.15 0.7 0.7)
+			  ]
 
 myTabConfig = def { activeBorderWidth = 0
                   , inactiveBorderWidth = 0
@@ -65,7 +70,8 @@ main = do
   spawn "xcompmgr"
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "setxkbmap -option caps:escape"
-  -- spawn "xmodmap -e \"keycode 64 = Escape\""
+  spawn "xmodmap -e \"keycode 64 = Escape\""
+  spawn "/usr/libexec/polkit-gnome-authentication-agent-1"
   xmproc <- spawnPipe $ "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
   xmonad $  ewmh $ docks def
     {
@@ -74,7 +80,8 @@ main = do
     , focusedBorderColor = "#FF8200"
     , borderWidth = 0
     , layoutHook = myLayout
-    , manageHook = myManageHook <+> manageDocks <+> manageHook def
+    , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks <+> manageHook def
+
     , terminal = "gnome-terminal"
     , logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
       {
@@ -83,7 +90,8 @@ main = do
       }
     } `additionalKeysP`
         [ 
-        ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi")
+        -- ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi -window-thumbnail -show-icons -theme-str 'element-icon { size: 20ch;}' -window-format '{t}'")
+        ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme sidebar -show combi -window-thumbnail -show-icons")
 		, ("M-S-h", sendMessage MirrorShrink)
 		, ("M-S-l", sendMessage MirrorExpand)
         , ("M-i", spawn "brave")
@@ -101,4 +109,5 @@ main = do
         , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%")
         , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 10%-")
         , ("<XF86AudioPlay>", spawn "playerctl play-pause")
+    	, ("M-t", namedScratchpadAction scratchpads "terminal")
         ]
