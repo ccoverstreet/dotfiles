@@ -27,6 +27,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Util.NamedScratchpad
 import XMonad.Hooks.ManageHelpers (doFullFloat)
 import XMonad.Hooks.FadeInactive
+import XMonad.Layout.TrackFloating
 import qualified XMonad.StackSet as W
 
 
@@ -39,7 +40,7 @@ myTabConfig = def { activeBorderWidth = 0
                   , activeColor="#003C70"
                   , inactiveColor="#000000"}
 
-myLayout = avoidStruts $ (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| noBorders Full)
+myLayout = avoidStruts $ trackFloating (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| noBorders Full)
   where
     tiled   = Tall nmaster delta ratio
     nmaster = 1      -- Default number of windows in the master pane
@@ -60,6 +61,8 @@ myManageHook = composeAll
   , className =? "gksqt" --> doFloat
   , fmap ("Figure" `isPrefixOf`) windowName --> doFloat
   , windowName =? "Figure 1" --> doFloat
+  , className =? "org-openscience-jmol-app-jmolpanel-JmolPanel" --> doFloat
+  , fmap ("PGPLOT" `isPrefixOf`) windowName --> doFloat
   ]
   where 
     windowName = stringProperty "WM_NAME"
@@ -72,20 +75,22 @@ main = do
   -- spawn "setxkbmap -option caps:escape"
   spawn "xmodmap -e \"keycode 64 = Escape\""
   spawn "/usr/libexec/polkit-gnome-authentication-agent-1"
-  xmproc <- spawnPipe $ "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
+  xmproc <- spawnPipe $ "/usr/bin/xmobar -x 0 ~/.xmonad/xmobar.hs"
+  xmproc1 <- spawnPipe $ "/usr/bin/xmobar -x 1 ~/.xmonad/xmobar.hs"
   xmonad $  ewmh $ docks def
     {
     modMask = mod4Mask
     , workspaces = myWorkspaces
     , focusedBorderColor = "#FF8200"
-    , borderWidth = 0
+    , normalBorderColor = "#000000"
+    , borderWidth = 2
     , layoutHook = myLayout
     , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks <+> manageHook def
 
     , terminal = "gnome-terminal"
     , logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
       {
-      ppOutput = hPutStrLn xmproc
+      ppOutput = \x ->  hPutStrLn xmproc x >> hPutStrLn xmproc1 x
       , ppTitle = xmobarColor "green" "" . shorten 50
       }
     } `additionalKeysP`
@@ -109,5 +114,5 @@ main = do
         , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%")
         , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 10%-")
         , ("<XF86AudioPlay>", spawn "playerctl play-pause")
-    	, ("M-t", namedScratchpadAction scratchpads "terminal")
+    	, ("M-s", namedScratchpadAction scratchpads "terminal")
         ]

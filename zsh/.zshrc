@@ -110,6 +110,8 @@ source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:~/.cargo/bin:~/.wasmer/bin
 alias vim="nvim"
+alias ranger=". ranger"
+export EDITOR=nvim
 
 
 
