@@ -81,13 +81,13 @@ main = do
     {
     modMask = mod4Mask
     , workspaces = myWorkspaces
-    , focusedBorderColor = "#FF8200"
-    , normalBorderColor = "#000000"
+    , focusedBorderColor = "#000000"
+    , normalBorderColor = "#AAAAAA"
     , borderWidth = 2
     , layoutHook = myLayout
     , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks <+> manageHook def
 
-    , terminal = "gnome-terminal"
+    , terminal = "kitty"
     , logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
       {
       ppOutput = \x ->  hPutStrLn xmproc x >> hPutStrLn xmproc1 x
