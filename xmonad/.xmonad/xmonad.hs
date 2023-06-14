@@ -37,8 +37,8 @@ scratchpads = [
 
 myTabConfig = def { activeBorderWidth = 0
                   , inactiveBorderWidth = 0
-                  , activeColor="#003C70"
-                  , inactiveColor="#000000"}
+                  , activeColor="#719899"
+                  , inactiveColor="#323232"}
 
 myLayout = avoidStruts $ trackFloating (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| noBorders Full)
   where
@@ -48,9 +48,9 @@ myLayout = avoidStruts $ trackFloating (tabbed shrinkText myTabConfig ||| Resiza
     delta   = 3/100  -- Percent of screen to increment by when resizing panes
 
 
-myWorkspaces = ["1:main", "2:school"]
+myWorkspaces = ["1", "2"]
   ++ map show [3..8]
-  ++ ["9:notes"]
+  ++ ["9"]
 
 myManageHook = composeAll
   [ 
@@ -81,9 +81,9 @@ main = do
     {
     modMask = mod4Mask
     , workspaces = myWorkspaces
-    , focusedBorderColor = "#000000"
-    , normalBorderColor = "#AAAAAA"
-    , borderWidth = 2
+    , focusedBorderColor = "#c8c8c8"
+    , normalBorderColor = "#000000"
+    , borderWidth = 1
     , layoutHook = myLayout
     , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks <+> manageHook def
 
@@ -91,12 +91,12 @@ main = do
     , logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
       {
       ppOutput = \x ->  hPutStrLn xmproc x >> hPutStrLn xmproc1 x
-      , ppTitle = xmobarColor "green" "" . shorten 50
+      , ppTitle = xmobarColor "#97bb98" "" . shorten 50
       }
     } `additionalKeysP`
         [ 
         -- ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi -window-thumbnail -show-icons -theme-str 'element-icon { size: 20ch;}' -window-format '{t}'")
-        ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme sidebar -show combi -window-thumbnail -show-icons")
+        ("M-p", spawn "/usr/bin/rofi -show combi")
 		, ("M-S-h", sendMessage MirrorShrink)
 		, ("M-S-l", sendMessage MirrorExpand)
         , ("M-i", spawn "brave")

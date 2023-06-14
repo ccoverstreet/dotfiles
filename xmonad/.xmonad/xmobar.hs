@@ -1,11 +1,11 @@
 Config {
 
    -- appearance
-   bgColor =      "black"
-   , fgColor =      "#646464"
+   bgColor =      "#323232"
+   , fgColor =      "#c8c8c8"
    , position =     Top
-   -- , border =       BottomB
-   , borderColor =  "#646464"
+   , border =       BottomB
+   , borderColor =  "#c8c8c8"
    , font = "xft:Bitstream Vera Sans Mono:size=11:bold:antialias=true"
 
    -- layout
@@ -50,44 +50,44 @@ Config {
          Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
+                             , "--low"      , "#709772"
+                             , "--normal"   , "#ff9900"
+                             , "--high"     , "#be7472"
                              ] 10
 
         -- cpu core temperature monitor
         , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
                              , "--Low"      , "70"        -- units: °C
                              , "--High"     , "80"        -- units: °C
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
+                             , "--low"      , "#709772"
+                             , "--normal"   , "#ff9900"
+                             , "--high"     , "#be7472"
                              ] 50
 
         -- memory usage monitor
         , Run Memory         [ "--template" ,"Mem: <usedratio>%"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
+                             , "--low"      , "#709772"
+                             , "--normal"   , "#ff9900"
+                             , "--high"     , "#be7472"
                              ] 10
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
-                             , "--Low"      , "10"        -- units: %
+                             , "--Low"      , "20"        -- units: %
                              , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
+                             , "--low"      , "#be7472"
+                             , "--normal"   , "#ff9900"
+                             , "--high"     , "#709772"
 
                              , "--" -- battery specific options
                                        -- discharging status
                                        , "-o"	, "<left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       , "-O"	, "<fc=#ff9900>Charging</fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                                       , "-i"	, "<fc=#709772>Charged</fc>"
                              ] 50
 
         , Run Com "jgetvolume" [] "volume" 10
