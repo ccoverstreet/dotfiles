@@ -1,0 +1,42 @@
+configuration {
+	modes: [ combi ];
+	combi-modes: [ window, run, ssh, brotab ];
+}
+
+@theme "android_notification"
+
+inputbar {
+	background-color: #719899;
+}
+
+prompt {
+	padding: 4px 8px;
+}
+
+entry {
+	placeholder: "Type here";
+	text-color: #c8c8c8;
+	background-color: #323232;
+	padding: 4px 8px;
+}
+
+mainbox {
+	background-color: #323232;
+}
+
+listview  {
+	background-color: #323232;
+}
+
+element normal active {
+	highlight: bold;	
+}
+
+element-text {
+	background-color: #323232;
+	border-color: #323232;
+}
+
+window {
+	background-color: #323232;
+}

@@ -69,7 +69,7 @@ myManageHook = composeAll
 
 
 main = do
-  spawn "feh --bg-fill ~/Pictures/Fantastic-HD-Black-Wallpapers-620x388.jpg"
+  spawn "feh --bg-fill ~/Pictures/IMG_2057.jpeg"
   spawn "xcompmgr"
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "setxkbmap -option caps:escape"
@@ -96,10 +96,10 @@ main = do
     } `additionalKeysP`
         [ 
         -- ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi -window-thumbnail -show-icons -theme-str 'element-icon { size: 20ch;}' -window-format '{t}'")
-        ("M-p", spawn "/usr/bin/rofi -show combi")
+        ("M-p", spawn "/usr/bin/rofi -modi brotab:~/.config/rofi/brofi.py -combi-modi window,run,ssh,brotab -show combi")
 		, ("M-S-h", sendMessage MirrorShrink)
 		, ("M-S-l", sendMessage MirrorExpand)
-        , ("M-i", spawn "brave")
+        , ("M-i", spawn "firefox")
         , ("M-f", spawn "nautilus --new-window")
         , ("M-C-s", spawn "jsuspend")
         , ("<Print>", spawn "gnome-screenshot -i")

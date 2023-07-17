@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PATH=$PATH:~/.cargo/bin:~/.wasmer/bin
+PATH=$PATH:~/.cargo/bin:~/.wasmer/bin:~/go/bin
 alias vim="nvim"
 alias ranger=". ranger"
 export EDITOR=nvim
