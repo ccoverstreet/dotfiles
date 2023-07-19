@@ -96,7 +96,7 @@ main = do
     } `additionalKeysP`
         [ 
         -- ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi -window-thumbnail -show-icons -theme-str 'element-icon { size: 20ch;}' -window-format '{t}'")
-        ("M-p", spawn "/usr/bin/rofi -modi brotab:~/.config/rofi/brofi.py -combi-modi window,run,ssh,brotab -show combi")
+        ("M-p", spawn "/usr/bin/rofi -modi brotab:~/.config/rofi/brofi.py -combi-modi window,brotab,run,ssh -show combi")
 		, ("M-S-h", sendMessage MirrorShrink)
 		, ("M-S-l", sendMessage MirrorExpand)
         , ("M-i", spawn "firefox")
