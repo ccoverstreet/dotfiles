@@ -32,7 +32,7 @@ import qualified XMonad.StackSet as W
 
 
 scratchpads = [
-	NS "terminal" "gnome-terminal --profile='Scratchpad' --role=SCRATCHPAD" (stringProperty "WM_WINDOW_ROLE" =? "SCRATCHPAD") (customFloating $ W.RationalRect 0.15 0.15 0.7 0.7)
+	NS "terminal" "kitty --class=SCRATCHPAD" (className =? "SCRATCHPAD") (customFloating $ W.RationalRect 0.15 0.15 0.7 0.7)
 			  ]
 
 myTabConfig = def { activeBorderWidth = 0
