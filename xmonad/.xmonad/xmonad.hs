@@ -100,7 +100,7 @@ main = do
 		, ("M-S-h", sendMessage MirrorShrink)
 		, ("M-S-l", sendMessage MirrorExpand)
         , ("M-i", spawn "firefox")
-        , ("M-f", spawn "nautilus --new-window")
+        , ("M-f", spawn "dolphin")
         , ("M-C-s", spawn "jsuspend")
         , ("<Print>", spawn "gnome-screenshot -i")
         , ("M-<Tab>", moveTo Next (hiddenWS :&: Not emptyWS))
