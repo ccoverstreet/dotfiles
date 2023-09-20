@@ -28,6 +28,7 @@ import XMonad.Util.NamedScratchpad
 import XMonad.Hooks.ManageHelpers (doFullFloat)
 import XMonad.Hooks.FadeInactive
 import XMonad.Layout.TrackFloating
+import XMonad.Layout.Fullscreen
 import qualified XMonad.StackSet as W
 
 
@@ -40,7 +41,7 @@ myTabConfig = def { activeBorderWidth = 0
                   , activeColor="#719899"
                   , inactiveColor="#323232"}
 
-myLayout = avoidStruts $ trackFloating (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| noBorders Full)
+myLayout = avoidStruts $ trackFloating (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| fullscreenFull (noBorders Full))
   where
     tiled   = Tall nmaster delta ratio
     nmaster = 1      -- Default number of windows in the master pane
@@ -71,6 +72,7 @@ myManageHook = composeAll
 main = do
   spawn "feh --bg-fill ~/Pictures/IMG_2057.jpeg"
   spawn "xcompmgr"
+  spawn "ibus-daemon"
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "setxkbmap -option caps:escape"
   spawn "xmodmap -e \"keycode 64 = Escape\""
@@ -99,6 +101,8 @@ main = do
         ("M-p", spawn "/usr/bin/rofi -modi brotab:~/.config/rofi/brofi.py -combi-modi window,brotab,run,ssh -show combi")
 		, ("M-S-h", sendMessage MirrorShrink)
 		, ("M-S-l", sendMessage MirrorExpand)
+		, ("M-e", spawn "ibus engine xkb:us::eng")
+		, ("M-a", spawn "ibus engine anthy")
         , ("M-i", spawn "firefox")
         , ("M-f", spawn "dolphin")
         , ("M-C-s", spawn "jsuspend")
