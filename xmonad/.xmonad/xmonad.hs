@@ -70,9 +70,9 @@ myManageHook = composeAll
 
 
 main = do
-  spawn "feh --bg-fill ~/Pictures/IMG_2057.jpeg"
-  spawn "xcompmgr"
-  spawn "ibus-daemon"
+  spawn "feh --bg-fill ~/Pictures/jmzk9pqizgza1.jpg"
+  spawn "compton"
+  spawn "ibus-daemon -rxR"
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "setxkbmap -option caps:escape"
   spawn "xmodmap -e \"keycode 64 = Escape\""

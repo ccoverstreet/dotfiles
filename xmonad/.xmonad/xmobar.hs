@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% | %multicpu% | %coretemp% | %memory% | Vol: %volume%}{%UnsafeStdinReader% || %date%  "
+   , template = "%battery% | %multicpu% | %coretemp% | %memory% | Vol: %volume%}{%UnsafeStdinReader% || %wlo1wi% | %date%  "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -47,16 +47,16 @@ Config {
         --                     ] 10
 
         -- cpu activity monitor
-         Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+         Run MultiCpu       [ "--template" , "CPU: <autototal>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "#709772"
                              , "--normal"   , "#ff9900"
                              , "--high"     , "#be7472"
-                             ] 10
+                             ] 50
 
         -- cpu core temperature monitor
-        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+        , Run CoreTemp       [ "--template" , "Temp: <core0>°C"
                              , "--Low"      , "70"        -- units: °C
                              , "--High"     , "80"        -- units: °C
                              , "--low"      , "#709772"
@@ -71,7 +71,7 @@ Config {
                              , "--low"      , "#709772"
                              , "--normal"   , "#ff9900"
                              , "--high"     , "#be7472"
-                             ] 10
+                             ] 50
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
@@ -85,12 +85,14 @@ Config {
                                        -- discharging status
                                        , "-o"	, "<left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#ff9900>Charging</fc>"
+                                       , "-O"	, "<fc=#ff9900>Charging</fc> <left>%"
                                        -- charged status
                                        , "-i"	, "<fc=#709772>Charged</fc>"
                              ] 50
 
         , Run Com "jgetvolume" [] "volume" 10
+        
+		, Run Wireless "wlo1" [] 50
 
         -- time and date indicator
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
