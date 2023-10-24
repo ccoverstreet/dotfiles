@@ -70,7 +70,7 @@ myManageHook = composeAll
 
 
 main = do
-  spawn "feh --bg-fill ~/Pictures/jmzk9pqizgza1.jpg"
+  spawn "feh --bg-fill ~/Pictures/pawel-czerwinski-IcOg3D9yh0o-unsplash.jpg"
   spawn "compton"
   spawn "ibus-daemon -rxR"
   spawn "xsetroot -cursor_name left_ptr"
@@ -112,6 +112,7 @@ main = do
         , ("M-u", spawn "autorandr common")
         , ("M-S-u", spawn "autorandr horizontal")
         , ("M-b", sendMessage ToggleStruts)
+        , ("M-n", spawn "dunstctl set-paused toggle")
         , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
         , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +2%")
         , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")

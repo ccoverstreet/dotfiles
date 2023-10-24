@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%battery% | %multicpu% | %coretemp% | %memory% | Vol: %volume%}{%UnsafeStdinReader% || %wlo1wi% | %date%  "
+   , template = "%battery% | %multicpu% | %coretemp% | %memory% | Vol: %volume% | Notifications: %notifications%}{%UnsafeStdinReader% || %wlo1wi% | %date%  "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -91,6 +91,8 @@ Config {
                              ] 50
 
         , Run Com "jgetvolume" [] "volume" 10
+
+		, Run Com "jnotification-status" [] "notifications" 50
         
 		, Run Wireless "wlo1" [] 50
 
