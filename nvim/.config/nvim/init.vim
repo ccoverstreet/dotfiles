@@ -33,6 +33,8 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'jpalardy/vim-slime', { 'for': 'python' }
+Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 call plug#end()
 
 let g:indent_blankline_char = '|'
@@ -53,6 +55,45 @@ function MkdWritePost()
 	!mkd2pdf %
 	cd -
 endfunction
+
+let g:slime_target = 'tmux'
+
+" fix paste issues in ipython
+let g:slime_python_ipython = 1
+
+" always send text to the top-right pane in the current tmux tab without asking
+let g:slime_default_config = {
+            \ 'socket_name': get(split($TMUX, ','), 0),
+            \ 'target_pane': '{top-right}' }
+
+let g:slime_dont_ask_default = 1
+
+
+" map <Leader>s to start IPython
+nnoremap <Leader>s :SlimeSend1 ipython --matplotlib<CR>
+
+" map <Leader>r to run script
+nnoremap <Leader>r :IPythonCellRun<CR>
+
+" map <Leader>R to run script and time the execution
+nnoremap <Leader>R :IPythonCellRunTime<CR>
+
+" map <Leader>c to execute the current cell
+nnoremap <Leader>c :IPythonCellExecuteCell<CR>
+
+" map <Leader>C to execute the current cell and jump to the next cell
+nnoremap <Leader>C :IPythonCellExecuteCellJump<CR>
+
+" map <Leader>l to clear IPython screen
+nnoremap <Leader>l :IPythonCellClear<CR>
+
+" map <Leader>x to close all Matplotlib figure windows
+nnoremap <Leader>x :IPythonCellClose<CR>
+
+" map [c and ]c to jump to the previous and next cell header
+nnoremap [c :IPythonCellPrevCell<CR>
+nnoremap ]c :IPythonCellNextCell<CR>
+
 
 :command MkdView !jopen %:p:h/%:p:t:r.pdf
 " End note taking (Mkd) related code

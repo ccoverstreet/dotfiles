@@ -15,6 +15,7 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.ManageDocks
 import XMonad.Actions.CycleWS
 import XMonad.Actions.UpdatePointer
+import XMonad.Actions.Promote
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
@@ -24,11 +25,13 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.TabBarDecoration
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Magnifier
 import XMonad.Util.NamedScratchpad
 import XMonad.Hooks.ManageHelpers (doFullFloat)
 import XMonad.Hooks.FadeInactive
 import XMonad.Layout.TrackFloating
 import XMonad.Layout.Fullscreen
+import XMonad.Actions.Navigation2D
 import qualified XMonad.StackSet as W
 
 
@@ -41,7 +44,7 @@ myTabConfig = def { activeBorderWidth = 0
                   , activeColor="#719899"
                   , inactiveColor="#323232"}
 
-myLayout = avoidStruts $ trackFloating (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| fullscreenFull (noBorders Full))
+myLayout = avoidStruts $ (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| fullscreenFull (noBorders Full))
   where
     tiled   = Tall nmaster delta ratio
     nmaster = 1      -- Default number of windows in the master pane
@@ -75,11 +78,16 @@ main = do
   spawn "ibus-daemon -rxR"
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "setxkbmap -option caps:escape"
-  spawn "xmodmap -e \"keycode 64 = Escape\""
+  -- spawn "xmodmap -e \"keycode 64 = Escape\""
   spawn "/usr/libexec/polkit-gnome-authentication-agent-1"
   xmproc <- spawnPipe $ "/usr/bin/xmobar -x 0 ~/.xmonad/xmobar.hs"
   xmproc1 <- spawnPipe $ "/usr/bin/xmobar -x 1 ~/.xmonad/xmobar.hs"
-  xmonad $  ewmh $ docks def
+  xmonad $  ewmh $ navigation2DP def
+                              ("<Up>", "<Left>", "<Down>", "<Right>")
+                              [("M-",   windowGo  ),
+                               ("M-S-", windowSwap)]
+                              False
+              $ docks def
     {
     modMask = mod4Mask
     , workspaces = myWorkspaces
@@ -89,7 +97,7 @@ main = do
     , layoutHook = myLayout
     , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks <+> manageHook def
 
-    , terminal = "kitty"
+    , terminal = "konsole"
     , logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
       {
       ppOutput = \x ->  hPutStrLn xmproc x >> hPutStrLn xmproc1 x
@@ -98,7 +106,9 @@ main = do
     } `additionalKeysP`
         [ 
         -- ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi -window-thumbnail -show-icons -theme-str 'element-icon { size: 20ch;}' -window-format '{t}'")
-        ("M-p", spawn "/usr/bin/rofi -modi brotab:~/.config/rofi/brofi.py -combi-modi window,brotab,run,ssh -show combi")
+        ("M-p", spawn "/usr/bin/rofi -modi brotab:~/.config/rofi/brofi.py -combi-modi window,brotab,run,ssh -show combi -show-icons")
+        , ("M-j", windows W.focusDown)
+        , ("M-k", windows W.focusUp)
 		, ("M-S-h", sendMessage MirrorShrink)
 		, ("M-S-l", sendMessage MirrorExpand)
 		, ("M-e", spawn "ibus engine xkb:us::eng")
