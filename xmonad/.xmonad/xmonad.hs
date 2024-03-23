@@ -13,11 +13,13 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.Place as WP
 import XMonad.Actions.CycleWS
 import XMonad.Actions.UpdatePointer
 import XMonad.Actions.Promote
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
+import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
@@ -44,7 +46,7 @@ myTabConfig = def { activeBorderWidth = 0
                   , activeColor="#719899"
                   , inactiveColor="#323232"}
 
-myLayout = avoidStruts $ (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| fullscreenFull (noBorders Full))
+myLayout = avoidStruts $ (tabbed shrinkText myTabConfig ||| ResizableTall 1 (3/100) (1/2) [] ||| toggleLayouts Full (fullscreenFull (noBorders Full)))
   where
     tiled   = Tall nmaster delta ratio
     nmaster = 1      -- Default number of windows in the master pane
@@ -60,10 +62,10 @@ myManageHook = composeAll
   [ 
   resource =? "Dialog" --> doFloat
   , className =? "kdeconnect.daemon" --> doFullFloat
-  , className =? "python3" --> doFloat
+  , className =? "python3" --> doCenterFloat
   , className =? "zoom" <&&> title /=? "Zoom Meeting" --> doFloat
   , className =? "gksqt" --> doFloat
-  , fmap ("Figure" `isPrefixOf`) windowName --> doFloat
+  , fmap ("Figure" `isPrefixOf`) windowName --> doCenterFloat
   , windowName =? "Figure 1" --> doFloat
   , className =? "org-openscience-jmol-app-jmolpanel-JmolPanel" --> doFloat
   , fmap ("PGPLOT" `isPrefixOf`) windowName --> doFloat
@@ -95,17 +97,21 @@ main = do
     , normalBorderColor = "#000000"
     , borderWidth = 1
     , layoutHook = myLayout
-    , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks <+> manageHook def
+    --, manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks 
+    --	<+> WP.placeHook (WP.withGaps (16, 0, 16, 0) (WP.smart (0.5,0.5))) <> manageHook def
+    , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks 
+    	<+> manageHook def
 
     , terminal = "konsole"
-    , logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
+    --, logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
+    , logHook = dynamicLogWithPP xmobarPP
       {
       ppOutput = \x ->  hPutStrLn xmproc x >> hPutStrLn xmproc1 x
       , ppTitle = xmobarColor "#97bb98" "" . shorten 50
       }
     } `additionalKeysP`
         [ 
-        -- ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi -window-thumbnail -show-icons -theme-str 'element-icon { size: 20ch;}' -window-format '{t}'")
+        -- ("M-p", spawn "/usr/bin/rofi -combi-modi window,run,ssh -theme Arc-Dark.rasi -show combi -window-thumbnail -show-icons -theme-str 'element-icon { size: 21ch;}' -window-format '{t}'")
         ("M-p", spawn "/usr/bin/rofi -modi brotab:~/.config/rofi/brofi.py -combi-modi window,brotab,run,ssh -show combi -show-icons")
         , ("M-j", windows W.focusDown)
         , ("M-k", windows W.focusUp)
