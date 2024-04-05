@@ -63,7 +63,7 @@ myManageHook = composeAll
   resource =? "Dialog" --> doFloat
   , className =? "kdeconnect.daemon" --> doFullFloat
   , className =? "python3" --> doCenterFloat
-  , className =? "zoom" <&&> title /=? "Zoom Meeting" --> doFloat
+  , className =? "zoom" <&&> netName /=? "Zoom Meeting" --> doFloat
   , className =? "gksqt" --> doFloat
   , fmap ("Figure" `isPrefixOf`) windowName --> doCenterFloat
   , windowName =? "Figure 1" --> doFloat
@@ -72,6 +72,7 @@ myManageHook = composeAll
   ]
   where 
     windowName = stringProperty "WM_NAME"
+    netName = stringProperty "_NET_WM_NAME"
 
 
 main = do
@@ -93,6 +94,7 @@ main = do
     {
     modMask = mod4Mask
     , workspaces = myWorkspaces
+    , focusFollowsMouse = False
     , focusedBorderColor = "#c8c8c8"
     , normalBorderColor = "#000000"
     , borderWidth = 1
@@ -127,6 +129,7 @@ main = do
         , ("M-o", nextScreen)
         , ("M-u", spawn "autorandr common")
         , ("M-S-u", spawn "autorandr horizontal")
+        , ("M-r", spawn "autorandr --change")
         , ("M-b", sendMessage ToggleStruts)
         , ("M-n", spawn "dunstctl set-paused toggle")
         , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -2%")
