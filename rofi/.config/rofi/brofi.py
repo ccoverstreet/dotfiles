@@ -2,6 +2,7 @@
 
 import sys
 import subprocess
+import sys 
 
 def main():
     if len(sys.argv) == 1:
@@ -23,6 +24,7 @@ def convert_arg_to_bt_id(arg):
     return split[0]
 
 def open_bt_id(bt_id):
+    subprocess.run(["bt", "activate", "--focused", bt_id])
     subprocess.run(["bt", "activate", "--focused", bt_id])
 
 

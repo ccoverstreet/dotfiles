@@ -80,6 +80,8 @@ main = do
   spawn "compton"
   spawn "ibus-daemon -rxR"
   spawn "xsetroot -cursor_name left_ptr"
+  spawn "qlipper"
+  spawn "dunst"
   -- spawn "setxkbmap -option caps:escape"
   -- spawn "xmodmap -e \"keycode 64 = Escape\""
   spawn "/usr/libexec/polkit-gnome-authentication-agent-1"
@@ -95,16 +97,17 @@ main = do
     modMask = mod4Mask
     , workspaces = myWorkspaces
     , focusFollowsMouse = False
-    , focusedBorderColor = "#c8c8c8"
+    --, focusedBorderColor = "#c8c8c8"
+    , focusedBorderColor = "#f7b823"
     , normalBorderColor = "#000000"
-    , borderWidth = 1
+    , borderWidth = 2
     , layoutHook = myLayout
     --, manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks 
     --	<+> WP.placeHook (WP.withGaps (16, 0, 16, 0) (WP.smart (0.5,0.5))) <> manageHook def
     , manageHook = myManageHook <+> namedScratchpadManageHook scratchpads <+> manageDocks 
     	<+> manageHook def
 
-    , terminal = "konsole"
+    , terminal = "kitty"
     --, logHook = updatePointer (0.5, 0.5) (0.0, 0.0) <+> dynamicLogWithPP xmobarPP
     , logHook = dynamicLogWithPP xmobarPP
       {

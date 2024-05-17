@@ -10,6 +10,7 @@
 :noremap <C-h> :tabprevious<cr>
 :noremap \b cw\begin{<C-R>"}<CR>\end{<C-R>"}
 
+
 :set clipboard+=unnamedplus
 
 call plug#begin("~/.nvim")
@@ -35,6 +36,7 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
+Plug 'slint-ui/vim-slint'
 call plug#end()
 
 let g:indent_blankline_char = '|'
@@ -44,6 +46,8 @@ colorscheme kanagawa
 set foldmethod=syntax
 hi Normal ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
+set fillchars+=vert:\|
+hi vertsplit ctermfg = 'white' ctermbg = 'white'
 
 " Turn of autopairs enable shortcut
 let g:AutoPairsShortcutToggle = ''
