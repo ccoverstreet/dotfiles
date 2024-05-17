@@ -46,8 +46,9 @@ colorscheme kanagawa
 set foldmethod=syntax
 hi Normal ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
-set fillchars+=vert:\|
-hi vertsplit ctermfg = 'white' ctermbg = 'white'
+
+set fillchars=|
+" hi VertSplit ctermfg=15 ctermbg=15 guifg=15 guibg=15
 
 " Turn of autopairs enable shortcut
 let g:AutoPairsShortcutToggle = ''
