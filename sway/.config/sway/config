@@ -7,6 +7,8 @@
 include /etc/sway/config.d/*
 
 ### Variables
+exec mako
+exec kanshi
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -27,8 +29,7 @@ set $term foot
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
-#set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
-set $menu "rofi -show combi -combi-modi window,slack  -show-icons"
+set $menu "rofi -show combi -combi-modes window,run -modes combi""
 xwayland enable
 
 ### Output configuration
@@ -82,6 +83,8 @@ output * bg /usr/share/backgrounds/default.png fill
 
     # Start your launcher
     bindsym $mod+p exec $menu
+    bindsym $mod+i exec firefox
+    bindsym $mod+Shift+i exec "firefox --private-window"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -209,6 +212,11 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+bindsym $mod+Control+Shift+$right move workspace to output right
+bindsym $mod+Control+Shift+$left move workspace to output left
+bindsym $mod+Control+Shift+$down move workspace to output down
+bindsym $mod+Control+Shift+$up move workspace to output up
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d

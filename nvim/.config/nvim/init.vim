@@ -75,7 +75,7 @@ let g:slime_dont_ask_default = 1
 
 
 " map <Leader>s to start IPython
-nnoremap <Leader>s :SlimeSend1 ipython --matplotlib<CR>
+nnoremap <Leader>s :SlimeSend1 ipython<CR>
 
 " map <Leader>r to run script
 nnoremap <Leader>r :IPythonCellRun<CR>
