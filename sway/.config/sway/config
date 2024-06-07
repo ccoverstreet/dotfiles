@@ -8,7 +8,10 @@ include /etc/sway/config.d/*
 
 ### Variables
 exec mako
-exec kanshi
+exec_always {
+	kill kanshi
+	kanshi &
+}
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
