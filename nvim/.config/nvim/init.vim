@@ -54,12 +54,12 @@ set fillchars=|
 let g:AutoPairsShortcutToggle = ''
 
 " Note taking (Mkd) related code
-autocmd BufWritePost *.mkd call MkdWritePost()
-function MkdWritePost() 
-	cd %:p:h 
-	!mkd2pdf %
-	cd -
-endfunction
+" autocmd BufWritePost *.mkd call MkdWritePost()
+" function MkdWritePost() 
+" 	cd %:p:h 
+" 	!mkd2pdf %
+" 	cd -
+" endfunction
 
 let g:slime_target = 'tmux'
 
