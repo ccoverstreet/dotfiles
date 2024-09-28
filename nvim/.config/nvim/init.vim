@@ -95,9 +95,13 @@ nnoremap <Leader>l :IPythonCellClear<CR>
 " map <Leader>x to close all Matplotlib figure windows
 nnoremap <Leader>x :IPythonCellClose<CR>
 
+" Map to change Ipython directory to current file
+nnoremap <Leader>d :execute 'SlimeSend1 cd ' expand('%:p:h')<CR>
+
 " map [c and ]c to jump to the previous and next cell header
 nnoremap [c :IPythonCellPrevCell<CR>
 nnoremap ]c :IPythonCellNextCell<CR>
+
 
 
 :command MkdView !jopen %:p:h/%:p:t:r.pdf
