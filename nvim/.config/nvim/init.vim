@@ -128,7 +128,7 @@ let g:go_highlight_types = 1
 :set noet ci pi sts=0 sw=4 ts=4
 filetype plugin on
 autocmd FileType c,cpp,java setlocal noet ci pi sts=0 sw=4 ts=4
-autocmd BufRead,BufNewFile *.py setlocal et ts=4 sw=4
+"autocmd BufRead,BufNewFile *.py setlocal et ts=4 sw=4
 autocmd BufRead,BufNewFile *.md setfiletype pandoc
 
 let g:python_recommended_style = 1
