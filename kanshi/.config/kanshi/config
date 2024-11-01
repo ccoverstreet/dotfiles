@@ -1,0 +1,31 @@
+profile {
+	output eDP-1 mode position 0,0 
+}
+
+profile {
+	output 'ASUSTek COMPUTER INC ASUS VA27EHE M1LMTF256229' HDMI-A-1 mode 1920x1080 position 0,-1080
+	output eDP-1 mode position 0,0
+}
+
+
+profile extendright {
+	output eDP-1 mode 1920x1080 position 0,0 
+	output HDMI-A-1 mode 1920x1080 position 1920,0
+}
+
+profile extendleft {
+	output eDP-1 mode 1920x1080 position 0,0 
+	output HDMI-A-1 position -1920,0
+}
+
+profile extenddown {
+	output eDP-1 mode 1920x1080 position 0,0 
+	output HDMI-A-1 position 0,1080
+}
+
+profile extendup {
+	output eDP-1 mode 1920x1080 position 0,1080
+	output HDMI-A-1 position 0,0
+}
+
+
