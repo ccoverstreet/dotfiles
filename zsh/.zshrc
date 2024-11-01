@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:~/bin:~/.cargo/bin:~/.wasmer/bin:~/go/bin:~/Applications/flutter/bin/
 alias vim="nvim"
-alias ranger=". ranger"
+alias ranger="source ranger"
 export EDITOR=nvim
 
 eval "$(dircolors ~/.dircolors)";
