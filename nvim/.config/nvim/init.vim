@@ -102,8 +102,6 @@ nnoremap <Leader>d :execute 'SlimeSend1 cd ' expand('%:p:h')<CR>
 nnoremap [c :IPythonCellPrevCell<CR>
 nnoremap ]c :IPythonCellNextCell<CR>
 
-
-
 :command MkdView !jopen %:p:h/%:p:t:r.pdf
 " End note taking (Mkd) related code
 
