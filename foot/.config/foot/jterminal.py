@@ -19,9 +19,13 @@ def main():
         return
         sessions = []
 
+    # find max name length
+    max_len = 0
+    for s in sessions:
+        max_len = len(s.name) if len(s.name) > max_len else max_len
 
     for i, s in enumerate(sessions):
-        print(f"{('(' + str(i) + ')'):5} |{s.name}| : with {s.n_windows} windows created {s.created} {"(attached)" if s.is_attached else "(not attached)"}")
+        print(f"{('(' + str(i) + ')'):5} |{(s.name)}{" " * (max_len - len(s.name))}| : with {s.n_windows} windows created {s.created} {"(attached)" if s.is_attached else "(not attached)"}")
 
     while True:
 
