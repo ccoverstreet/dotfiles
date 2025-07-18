@@ -1,6 +1,6 @@
 configuration {
 	modes: [ combi ];
-	combi-modes: [ window, run, ssh, brotab ];
+	combi-modes: "window, run, ssh, brotab:~/.config/rofi/brotab.lua";
 }
 
 @theme "android_notification"

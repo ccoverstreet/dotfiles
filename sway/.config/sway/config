@@ -32,14 +32,16 @@ set $term foot
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
-set $menu "rofi -show combi -combi-modes window,run -modes combi""
+#set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brotab.lua,run -show combi"
+set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brotab.lua,drun,run -show combi"
+#set $menu "rofi -terminall $term --config .config/rofi/config.rasi -show combi"
 xwayland enable
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg /usr/share/backgrounds/default.png fill
+#output * bg /usr/share/backgrounds/default.png fill
 #
 # Example configuration:
 #
@@ -79,7 +81,7 @@ output * bg /usr/share/backgrounds/default.png fill
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -97,7 +99,7 @@ output * bg /usr/share/backgrounds/default.png fill
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -220,6 +222,12 @@ bindsym $mod+Control+Shift+$right move workspace to output right
 bindsym $mod+Control+Shift+$left move workspace to output left
 bindsym $mod+Control+Shift+$down move workspace to output down
 bindsym $mod+Control+Shift+$up move workspace to output up
+
+bindsym $mod+d exec dolphin
+bindsym $mod+n exec "makoctl dismiss"
+bindsym $mod+Shift+n exec "makoctl dismiss -a"
+bindsym $mod+m exec "makoctl mode -a do-not-disturb"
+bindsym $mod+Shift+m exec "makoctl mode -r do-not-disturb"
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d

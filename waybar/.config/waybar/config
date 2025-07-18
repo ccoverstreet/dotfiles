@@ -7,13 +7,13 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/mode",
-        "hyprland/scratchpad",
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad",
         "custom/media"
     ],
     "modules-center": [
-        "hyprland/window"
+        "sway/window"
     ],
     "modules-right": [
         "mpd",
@@ -33,7 +33,7 @@
         "tray"
     ],
     // Modules configuration
-     "hyprland/workspaces": {
+     "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,
          "warp-on-scroll": false,
@@ -58,10 +58,10 @@
             "unlocked": ""
         }
     },
-    "hyprland/mode": {
+    "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "hyprland/scratchpad": {
+    "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],

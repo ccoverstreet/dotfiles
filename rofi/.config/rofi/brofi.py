@@ -5,6 +5,9 @@ import subprocess
 import sys 
 
 def main():
+    
+    with open("~/rofi.txt", "a") as f:
+        f.write("GETTING TABS\n")
     if len(sys.argv) == 1:
         # Initial call from Rofi
         res = get_tabs()
@@ -15,6 +18,8 @@ def main():
         open_bt_id(bt_id)
 
 def get_tabs():
+    with open("~/rofi.txt", "a") as f:
+        f.write("GETTING TABS\n")
     raw = subprocess.run(["bt", "list"], capture_output=True)
     out = raw.stdout.decode("utf-8")
     return out

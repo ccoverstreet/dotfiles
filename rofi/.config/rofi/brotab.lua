@@ -1,13 +1,20 @@
 #!/usr/bin/lua
 
+
+file = io.open("example.txt", "a")
+file:write("ASD\n")
+
 local bp = require("lua-shepi")
 local rofi_markup = print("\0markup-rows\x1ftrue\n")
+
 
 local function GetTabs(sin, sout, serr)
     local delim = print("\x00delim\x1f\x0f")
     local markup_s = '%s\n<span foreground="#6B838E">%s\n</span><span foreground="#44555D"><small><i>%s</i></small></span>\x0f'
     local pipe_in = sin:read("a")
+	file:write(pipe_in)
     for line in pipe_in:gmatch("([^\n]*)\n") do
+		file:write(line)
         local id, title, url = line:match("([^\t]+)\t([^\t]+)\t([^\t]+)")
         local result = string.format(markup_s, title, url:match("https?://[www%.]*(.*)"), id)
         local prune_s = result:gsub("&", "&amp;")
@@ -18,6 +25,8 @@ end
 args = {...}
 local pipe = bp.bt("list") | bp.tac("-s", "\n") | bp.fun(GetTabs)
 if not args[1] then
+	file:write(bp.bt("list"))
+	file:write("after pipe\n")
     io.write(pipe())
 else
     os.execute(string.format("bt activate %s", args[1]:match("<i>(.-)</i>")))

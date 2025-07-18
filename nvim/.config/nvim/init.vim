@@ -16,7 +16,7 @@
 call plug#begin("~/.nvim")
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'ziglang/zig.vim'
