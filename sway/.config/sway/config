@@ -23,6 +23,7 @@ set $right l
 # Your preferred terminal emulator
 # Recommends: foot
 set $term foot
+set $focus_on_window_activation focus
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
