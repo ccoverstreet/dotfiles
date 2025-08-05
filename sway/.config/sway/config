@@ -54,10 +54,10 @@ xwayland enable
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+ exec swayidle -w \
+          timeout 500 'swaylock -f -c 000000' \
+          timeout 800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -229,6 +229,8 @@ bindsym $mod+n exec "makoctl dismiss"
 bindsym $mod+Shift+n exec "makoctl dismiss -a"
 bindsym $mod+m exec "makoctl mode -a do-not-disturb"
 bindsym $mod+Shift+m exec "makoctl mode -r do-not-disturb"
+
+bindsym --release Print exec "~/coding/utilities/sway-screenshot/sway-screenshot -o ~/Pictures/Screenshots -m region"
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
