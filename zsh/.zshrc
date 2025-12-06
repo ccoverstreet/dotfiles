@@ -1,7 +1,7 @@
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
-export SWAYSOCK=$(ls /run/user/1000/sway* | head -n 1)
+#export SWAYSOCK=$(ls /run/user/1000/sway* | head -n 1)
 #
 
 # Path to your oh-my-zsh installation.

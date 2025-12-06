@@ -5,12 +5,12 @@ file = io.open("example.txt", "a")
 file:write("ASD\n")
 
 local bp = require("lua-shepi")
-local rofi_markup = print("\0markup-rows\x1ftrue\n")
+local rofi_markup = print("markup-row\ntrue\n")
 
 
 local function GetTabs(sin, sout, serr)
-    local delim = print("\x00delim\x1f\x0f")
-    local markup_s = '%s\n<span foreground="#6B838E">%s\n</span><span foreground="#44555D"><small><i>%s</i></small></span>\x0f'
+    local delim = print("delim")
+    local markup_s = '%s\n%s\n%s'
     local pipe_in = sin:read("a")
 	file:write(pipe_in)
     for line in pipe_in:gmatch("([^\n]*)\n") do
@@ -25,9 +25,10 @@ end
 args = {...}
 local pipe = bp.bt("list") | bp.tac("-s", "\n") | bp.fun(GetTabs)
 if not args[1] then
-	file:write(bp.bt("list"))
-	file:write("after pipe\n")
-    io.write(pipe())
+
+	--file:write(bp.bt("list"))
+	--file:write("after pipe\n")
+    --io.write(pipe())
 else
     os.execute(string.format("bt activate %s", args[1]:match("<i>(.-)</i>")))
 end

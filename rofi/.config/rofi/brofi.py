@@ -4,10 +4,15 @@ import sys
 import subprocess
 import sys 
 
+BT_COMMAND = "/home/coverstreet/.local/bin/bt"
+
 def main():
-    
-    with open("~/rofi.txt", "a") as f:
-        f.write("GETTING TABS\n")
+    #with open("/home/coverstreet/rofi.txt", "a") as f:
+    #    f.write("ASDAS")
+    #    f.write(sys.argv)
+    #    res = get_tabs()
+    #    for r in res:
+    #        f.write(r)
     if len(sys.argv) == 1:
         # Initial call from Rofi
         res = get_tabs()
@@ -18,10 +23,8 @@ def main():
         open_bt_id(bt_id)
 
 def get_tabs():
-    with open("~/rofi.txt", "a") as f:
-        f.write("GETTING TABS\n")
-    raw = subprocess.run(["bt", "list"], capture_output=True)
-    out = raw.stdout.decode("utf-8")
+    raw = subprocess.run([BT_COMMAND, "list"], capture_output=True)
+    out = raw.stdout.decode("latin-1")
     return out
 
 def convert_arg_to_bt_id(arg):
@@ -29,8 +32,8 @@ def convert_arg_to_bt_id(arg):
     return split[0]
 
 def open_bt_id(bt_id):
-    subprocess.run(["bt", "activate", "--focused", bt_id])
-    subprocess.run(["bt", "activate", "--focused", bt_id])
+    subprocess.run([BT_COMMAND, "activate", "--focused", bt_id])
+    subprocess.run([BT_COMMAND, "activate", "--focused", bt_id])
 
 
 if __name__ == "__main__":

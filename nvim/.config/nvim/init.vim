@@ -37,9 +37,13 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'slint-ui/vim-slint'
+Plug 'leafoftree/vim-svelte-plugin'
 call plug#end()
 
+let g:vim_svelte_plugin_load_full_syntax = 1
+
 let g:indent_blankline_char = '|'
+
 
 "set termguicolors
 colorscheme kanagawa
@@ -54,12 +58,12 @@ set fillchars=|
 let g:AutoPairsShortcutToggle = ''
 
 " Note taking (Mkd) related code
-" autocmd BufWritePost *.mkd call MkdWritePost()
-" function MkdWritePost() 
-" 	cd %:p:h 
-" 	!mkd2pdf %
-" 	cd -
-" endfunction
+"autocmd BufWritePost *.md call MkdWritePost()
+"function MkdWritePost() 
+"	cd %:p:h 
+"	!mkd2pdf %
+"	cd -
+"endfunction
 
 let g:slime_target = 'tmux'
 
