@@ -64,7 +64,6 @@ button:hover {
 	background-color: #ffffff;
 }
 
-/*
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
@@ -72,7 +71,7 @@ button:hover {
 }
 
 #workspaces button:hover {
-    background: "#ffffff";
+    background: #ffffff;
 }
 
 #workspaces button.active {
@@ -83,7 +82,6 @@ button:hover {
 #workspaces button.urgent {
     background-color: #eb4d4b;
 }
-*/
 
 #mode {
     background-color: #64727D;
