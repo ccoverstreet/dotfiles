@@ -53,7 +53,7 @@ hi Normal ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
 
 
-hi ColorColumn guibg=white
+" hi ColorColumn guibg=white
 set colorcolumn=81
 
 set fillchars=|
