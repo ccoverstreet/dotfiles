@@ -11,6 +11,7 @@
 :noremap \b cw\begin{<C-R>"}<CR>\end{<C-R>"}
 
 
+
 :set clipboard+=unnamedplus
 
 call plug#begin("~/.nvim")
@@ -51,6 +52,10 @@ set foldmethod=syntax
 hi Normal ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
 
+
+hi ColorColumn guibg=white
+set colorcolumn=81
+
 set fillchars=|
 " hi VertSplit ctermfg=15 ctermbg=15 guifg=15 guibg=15
 
@@ -70,7 +75,8 @@ let g:slime_target = 'tmux'
 " fix paste issues in ipython
 let g:slime_python_ipython = 1
 
-" always send text to the top-right pane in the current tmux tab without asking
+" always send text to the top-right pane in the current tmux 
+" tab without asking
 let g:slime_default_config = {
             \ 'socket_name': get(split($TMUX, ','), 0),
             \ 'target_pane': '{top-right}' }

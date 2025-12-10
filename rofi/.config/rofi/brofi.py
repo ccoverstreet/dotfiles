@@ -33,7 +33,7 @@ def convert_arg_to_bt_id(arg):
 
 def open_bt_id(bt_id):
     subprocess.run([BT_COMMAND, "activate", "--focused", bt_id])
-    subprocess.run([BT_COMMAND, "activate", "--focused", bt_id])
+    #subprocess.run([BT_COMMAND, "activate", "--focused", bt_id])
 
 
 if __name__ == "__main__":
