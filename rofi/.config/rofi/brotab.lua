@@ -16,7 +16,8 @@ local function GetTabs(sin, sout, serr)
     for line in pipe_in:gmatch("([^\n]*)\n") do
 		file:write(line)
         local id, title, url = line:match("([^\t]+)\t([^\t]+)\t([^\t]+)")
-        local result = string.format(markup_s, title, url:match("https?://[www%.]*(.*)"), id)
+        local result = string.format(markup_s,
+        	title, url:match("https?://[www%.]*(.*)"), id)
         local prune_s = result:gsub("&", "&amp;")
         sout:write(prune_s)
     end
