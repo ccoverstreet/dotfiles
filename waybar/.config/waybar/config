@@ -35,7 +35,7 @@
     // Modules configuration
      "hyprland/workspaces": {
          "disable-scroll": true,
-         "all-outputs": true,
+         "all-outputs": false,
          "warp-on-scroll": false,
          "format": "{name}",
          //"format-icons": {
@@ -60,6 +60,9 @@
     },
     "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "hyprland/window": {
+		"separate-outputs": true
     },
     "hyprland/scratchpad": {
         "format": "{icon} {count}",

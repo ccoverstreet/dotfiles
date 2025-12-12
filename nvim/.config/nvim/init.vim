@@ -54,7 +54,7 @@ hi LineNr ctermbg=NONE guibg=NONE
 
 
 " hi ColorColumn guibg=white
-set colorcolumn=81
+" set colorcolumn=81
 
 set fillchars=|
 " hi VertSplit ctermfg=15 ctermbg=15 guifg=15 guibg=15
