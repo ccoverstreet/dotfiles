@@ -1,5 +1,6 @@
 background-color=#333333ff
 border-color=#ccccccff
+max-history=20
 
 [mode=do-not-disturb]
 invisible=1
