@@ -32,7 +32,7 @@ def main():
         if choice == "n":
             os.execvp("tmux", ["new"])
         elif choice == "t":
-            os.execvp("zsh", ["-i"])
+            os.execvp("fish", ["-i"])
         elif choice == "ls":
             sessions = get_tmux_sessions()
             display_tmux_sessions(sessions)
