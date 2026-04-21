@@ -1,0 +1,12 @@
+[
+    Home,
+    Documents,
+    Downloads,
+    Music,
+    Pictures,
+    Videos,
+    Path("/home/coverstreet/personal"),
+    Path("/home/coverstreet/research"),
+    Path("/home/coverstreet/Research"),
+    Path("/home/coverstreet/research/review"),
+]
