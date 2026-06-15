@@ -24,7 +24,7 @@ def main():
     while True:
 
         try:
-            choice = input("Select a session number, press 'n' for new session, or 't' for temporary\n$ ")
+            choice = input("Select a session number, press 'n' for new session, or 't' for temporary\n$ ").lower()
         except:
             print()
             return
