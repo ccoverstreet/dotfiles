@@ -76,7 +76,15 @@ output * bg ~/Pictures/Zuisenji-garden.JPG fill
 #   }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+# Read `man 5 swy-input` for more information about this section.
+
+input "type:pointer" {
+	natural_scroll enabled
+}
+
+input "type:touchpad" {
+	natural_scroll enabled
+}
 
 ### Key bindings
 #
