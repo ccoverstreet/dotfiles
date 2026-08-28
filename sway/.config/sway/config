@@ -12,6 +12,10 @@ exec_always {
 	kill kanshi
 	kanshi &
 }
+exec_always {
+	kill fcitx5
+	fcitx5 &
+}
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -24,6 +28,7 @@ set $right l
 # Recommends: foot
 set $term foot
 focus_on_window_activation focus
+bindsym $mod+u [urgent=latest] focus
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -239,6 +244,7 @@ bindsym $mod+n exec "makoctl dismiss"
 bindsym $mod+Shift+n exec "makoctl dismiss -a"
 bindsym $mod+m exec "makoctl mode -a do-not-disturb"
 bindsym $mod+Shift+m exec "makoctl mode -r do-not-disturb"
+bindsym $mod+Escape exec "swaylock"
 
 bindsym --release Print exec "~/coding/utilities/sway-screenshot/sway-screenshot -o ~/Pictures/Screenshots -m region"
 
