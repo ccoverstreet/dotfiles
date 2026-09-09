@@ -246,7 +246,8 @@ bindsym $mod+m exec "makoctl mode -a do-not-disturb"
 bindsym $mod+Shift+m exec "makoctl mode -r do-not-disturb"
 bindsym $mod+Escape exec "swaylock"
 
-bindsym --release Print exec "~/coding/utilities/sway-screenshot/sway-screenshot -o ~/Pictures/Screenshots -m region"
+#bindsym --release Print exec "~/coding/utilities/sway-screenshot/sway-screenshot -o ~/Pictures/Screenshots -m region"
+bindsym --release Print exec "~/jbin/sway-screenshot -o ~/Pictures/Screenshots -m region"
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
