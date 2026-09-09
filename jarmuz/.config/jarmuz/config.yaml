@@ -1,0 +1,21 @@
+packages:
+  /home/coverstreet/coding/jarmuz:
+    artifacts:
+    - jarmuz
+    location: /home/coverstreet/coding/jarmuz
+  github.com/ccoverstreet/CCOSRIMUtil:
+    artifacts:
+    - ccosrimutil
+    location: github.com/ccoverstreet/CCOSRIMUtil
+  github.com/ccoverstreet/RCIS:
+    artifacts:
+    - target/release/rcis
+    location: github.com/ccoverstreet/RCIS
+  github.com/ccoverstreet/Shannon-Ionic-Radii-Compiled:
+    artifacts:
+    - shannonradiicli.py
+    location: github.com/ccoverstreet/Shannon-Ionic-Radii-Compiled
+  github.com/ccoverstreet/sway-screenshot:
+    artifacts:
+    - sway-screenshot
+    location: github.com/ccoverstreet/sway-screenshot
