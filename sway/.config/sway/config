@@ -63,7 +63,9 @@ output * bg ~/Pictures/Zuisenji-garden.JPG fill
  exec swayidle -w \
           timeout 2000 'swaylock -f -c 000000' \
           timeout 2050 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep 'swaylock -f -c 000000'\
+          lock 'swaylockl -f'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
