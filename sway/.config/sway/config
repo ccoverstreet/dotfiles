@@ -7,6 +7,10 @@
 include /etc/sway/config.d/*
 
 ### Variables
+exec_always {
+	killall waybar
+	waybar & 
+}
 exec mako
 exec_always {
 	kill kanshi
@@ -197,6 +201,7 @@ input "type:touchpad" {
     # Move focus to the parent container
     bindsym $mod+Shift+a focus parent
     bindsym $mod+a focus child
+    bindsym $mod+Shift+b split none
 #
 # Scratchpad:
 #
