@@ -6,7 +6,7 @@ import re
 
 def main():
     if len(sys.argv) == 1:
-        print("google.com")
+        print("duckduckgo.com")
         return
     else:
         # Check if there is only 1 argument and

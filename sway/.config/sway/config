@@ -42,10 +42,9 @@ bindsym $mod+u [urgent=latest] focus
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
-set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brofi.py,drun,run,Search:~/.config/rofi/internet.py -modes combi -show combi"
-#set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brotab.lua,drun,run -show combi"
-#set $menu "rofi -show run"
-#set $menu "rofi -terminall $term --config .config/rofi/config.rasi -show combi"
+#set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brofi.py,drun,run,Search:~/.config/rofi/internet.py -modes combi -show combi"
+#set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brofi.py,drun,run -modes combi -show combi"
+set $menu "rofi -combi-modes window,tabs:~/.local/bin/rofitabs, drun,run -modes combi -show combi"
 xwayland enable
 
 ### Output configuration
