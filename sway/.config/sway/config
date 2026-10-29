@@ -44,7 +44,7 @@ bindsym $mod+u [urgent=latest] focus
 # TODO: add window with the next release of rofi-wayland
 #set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brofi.py,drun,run,Search:~/.config/rofi/internet.py -modes combi -show combi"
 #set $menu "rofi -combi-modes window,Brotab:/home/coverstreet/.config/rofi/brofi.py,drun,run -modes combi -show combi"
-set $menu "rofi -combi-modes window,tabs:~/.local/bin/rofitabs, drun,run -modes combi -show combi"
+set $menu "rofi -combi-modes window,tabs:~/.local/bin/rofitabs,drun,run -modes combi -show combi"
 xwayland enable
 
 ### Output configuration
@@ -256,6 +256,8 @@ bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 #bindsym --release Print exec "~/coding/utilities/sway-screenshot/sway-screenshot -o ~/Pictures/Screenshots -m region"
 bindsym --release Print exec "~/jbin/sway-screenshot -o ~/Pictures/Screenshots -m region"
